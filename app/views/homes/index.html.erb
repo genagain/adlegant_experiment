@@ -4,3 +4,8 @@
 
   <%=f.submit "Add Article" %>
 <%-end-%>
+<ul>
+<% @articles.each do |article| %>
+  <li><%= link_to article.title, articles_path(article) %></li>
+  <%-end-%>
+</ul>

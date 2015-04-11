@@ -1,8 +1,13 @@
 class ArticlesController < ApplicationController
+
+  def index
+    @articles = Article.all
+  end
+
   def create
     url = params["article"]["url"]
     body = analyze(url)
-    @article = Article.new( url: url, title: body["title"], author: body["author"], summary: body["summary"].join(" "))
+    @article = Article.new( url: url, title: body["title"], author: body["author"], summary: body["summary"].join(" "), image_url: body["image"])
     @article.save
     body["tags"].each do |tag|
       @tag = Tag.find_or_create_by(word: tag)
