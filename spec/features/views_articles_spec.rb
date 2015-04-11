@@ -5,7 +5,6 @@ feature "user views all articles" do
     visit root_path
     fill_in "Link", with: "http://www.theverge.com/2014/11/26/7292895/best-black-friday-deals"
     click_button "Add Article"
-    save_and_open_page
     click_link "All Articles"
     click_link "The 20 best Black Friday deals"
     expect(page).to have_content("The 20 best Black Friday deals")
